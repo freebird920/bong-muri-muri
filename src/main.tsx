@@ -1,16 +1,27 @@
+// import reacrt
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
-import "./index.css";
-import App from "./App.tsx";
+
+// import react-router
 import { BrowserRouter, Route, Routes } from "react-router";
 
-createRoot(document.getElementById("root")!).render(
+// import css
+import "./index.css";
+
+// import component
+import NavbarComp from "./components/navbar/NavbarComp.tsx";
+import route from "./route.tsx";
+
+const root = document.getElementById("root")!;
+createRoot(root).render(
   <StrictMode>
     <BrowserRouter>
+      <NavbarComp></NavbarComp>
       <Routes>
-        <Route path="/" element={<App />} />
+        {route.map((element) => (
+          <Route key={element.path} {...element}></Route>
+        ))}
       </Routes>
-      {/* <App /> */}
     </BrowserRouter>
-  </StrictMode>
+  </StrictMode>,
 );
