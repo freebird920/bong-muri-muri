@@ -1,6 +1,40 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@font-face {
+  font-family: "NanumSquareNeo";
+  src: url("/public/font/NanumSquareNeo-aLt.ttf") format("truetype");
+  font-weight: 300; /* Light */
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "NanumSquareNeo";
+  src: url("/font/NanumSquareNeo-bRg.ttf") format("truetype");
+  font-weight: 400; /* Regular */
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "NanumSquareNeo";
+  src: url("/font/NanumSquareNeo-cBd.ttf") format("truetype");
+  font-weight: 700; /* Bold */
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "NanumSquareNeo";
+  src: url("/font/NanumSquareNeo-dEb.ttf") format("truetype");
+  font-weight: 800; /* Extra Bold */
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "NanumSquareNeo";
+  src: url("/font/NanumSquareNeo-eHv.ttf") format("truetype");
+  font-weight: 900; /* Heavy */
+  font-style: normal;
+}
 
 @layer components {
   .active {

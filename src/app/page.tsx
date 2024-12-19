@@ -1,9 +1,10 @@
 import { memo } from "react";
-import wallpaper from "../assets/wallpaper.png";
 const HomePage = memo(() => {
   return (
     <>
-      <img src={wallpaper} className="select-none"></img>
+      <h1 className="text-2xl font-extrabold">
+        봉우리코더 딥러닝 연구회(봉딥연)
+      </h1>
     </>
   );
 });

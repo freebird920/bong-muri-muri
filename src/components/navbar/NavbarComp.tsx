@@ -3,9 +3,15 @@ import { NavLink } from "react-router";
 
 const NavbarComp = memo(() => {
   return (
-    <nav>
+    <nav className="flex flex-row space-x-2">
       <NavLink to="/" className={({ isActive }) => (isActive ? "active" : "")}>
         Home
+      </NavLink>
+      <NavLink
+        to="/about"
+        className={({ isActive }) => (isActive ? "active" : "")}
+      >
+        About
       </NavLink>
       <NavLink
         to="/test"
