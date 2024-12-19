@@ -3,7 +3,7 @@ import { NavLink } from "react-router";
 
 const NavbarComp = memo(() => {
   return (
-    <nav className="flex flex-row space-x-2">
+    <nav className="flex flex-row items-center justify-center space-x-2">
       <NavLink to="/" className={({ isActive }) => (isActive ? "active" : "")}>
         Home
       </NavLink>
