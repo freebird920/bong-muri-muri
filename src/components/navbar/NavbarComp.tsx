@@ -1,5 +1,6 @@
 import { memo } from "react";
 import { NavLink } from "react-router";
+import GithubIcon from "../../icons/github_icon";
 
 const NavbarComp = memo(() => {
   return (
@@ -19,6 +20,9 @@ const NavbarComp = memo(() => {
       >
         Test
       </NavLink>
+      <a>
+        <GithubIcon />
+      </a>
     </nav>
   );
 });
