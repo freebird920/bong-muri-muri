@@ -15,12 +15,23 @@ const NavbarComp = memo(() => {
         About
       </NavLink>
       <NavLink
+        to="/book_review"
+        className={({ isActive }) => (isActive ? "active" : "")}
+      >
+        BookReview
+      </NavLink>
+      <NavLink
         to="/test"
         className={({ isActive }) => (isActive ? "active" : "")}
       >
         Test
       </NavLink>
-      <a>
+
+      <a
+        href="https://github.com/freebird920/bong-muri-muri"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
         <GithubIcon />
       </a>
     </nav>
