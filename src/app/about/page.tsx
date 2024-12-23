@@ -12,20 +12,21 @@ type MemberInfo = {
 const members: MemberInfo[] = [
   { name: "봉무리무리", img: wallpaper, description: "봉무리무리입니다." },
   {
-    name: "곤뇬(청소안함)",
+    name: "곤뇬",
     img: il_lee,
     description:
-      "청소를 하지 않습니다. 몰래 초코송이 먹습니다. 에이블리에서 공룡필통 구입하였습니다.",
+      "청소를 하지 않습니다. 몰래 초코송이 먹습니다. 에이블리에서 공룡필통 구입하였습니다. 매운 것을 잘 먹지 못하지만 마라탕을 먹고싶어 합니다?",
   },
   {
     name: "거울공주",
     img: il_choi,
-    description: "거울을 즐겨 봅니다. 금잔디.",
+    description: "거울을 즐겨 봅니다. X(twitter)는 몰래 하는 편입니다.",
   },
   {
     name: "왕자님",
     img: il_jiwoo,
-    description: "귀여운 남학생입니다. 웹툰을 좋아합니다.",
+    description:
+      "귀여운 남학생으로 웹툰을 좋아합니다. 귀여운 곰 캐릭터와 닮았습니다.",
   },
 ];
 

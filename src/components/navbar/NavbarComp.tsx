@@ -21,6 +21,12 @@ const NavbarComp = memo(() => {
         BookReview
       </NavLink>
       <NavLink
+        to="/doc"
+        className={({ isActive }) => (isActive ? "active" : "")}
+      >
+        Doc
+      </NavLink>
+      <NavLink
         to="/test"
         className={({ isActive }) => (isActive ? "active" : "")}
       >
