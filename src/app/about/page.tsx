@@ -25,7 +25,7 @@ const members: MemberInfo[] = [
   {
     name: "왕자님",
     img: il_jiwoo,
-    description: "귀여운 남학생으로 웹툰을 좋아합니다.",
+    description: "귀여운 남학생입니다. 웹툰을 좋아합니다.",
   },
 ];
 
