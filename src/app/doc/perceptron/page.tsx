@@ -89,7 +89,8 @@ const Perceptron = memo((props: PerceptronProps) => {
     const bias = formData.get("bias");
     const w1 = formData.get("w1");
     const w2 = formData.get("w2");
-    if (!bias || !w1 || !w2) throw new Error("empty form data");
+    if (bias === null || w1 === null || w2 === null)
+      throw new Error("empty form data");
     if (
       typeof bias !== "string" ||
       typeof w1 !== "string" ||
