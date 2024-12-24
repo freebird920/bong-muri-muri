@@ -144,10 +144,10 @@ const Perceptron = memo((props: PerceptronProps) => {
         <p>w1: {w1}</p>
         <p>w2: {w2}</p>
       </div>
-      <div>
+      <div className="container">
         <h4>진리표</h4>
-        <ul>
-          <li className="grid grid-cols-4">
+        <ul className="border-2 text-center">
+          <li className="grid grid-cols-4 font-bold">
             <p>x1</p>
             <p>x2</p>
             <p>y</p>
