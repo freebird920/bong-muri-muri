@@ -1,22 +1,6 @@
 import { FormEvent, memo, useId, useState } from "react";
 
 const DocPerceptronPage = memo(() => {
-  const sigmoidFunction = (x: number): number => {
-    return 1 / (1 + Math.exp(-x));
-  };
-  const inputValue: [number, number] = [1, 1];
-  const modelWeight: [number, number] = [1, 1];
-  const doPerceptron = () => {
-    let temp: number = 0;
-    for (const [index, weight] of modelWeight.entries()) {
-      console.log(`Index: ${index}, Weight: ${weight}`);
-      const val = weight * inputValue[index];
-      temp = temp + val;
-    }
-    const bias = -1.5;
-    console.log(temp + bias);
-    return sigmoidFunction(temp + bias);
-  };
   return (
     <div>
       <article>
@@ -29,18 +13,7 @@ const DocPerceptronPage = memo(() => {
             {`const stepFunction = (x:number)=>{\n  if(x<0) return 0;\n  if(x>=0) return 1;\n}`}
           </pre>
         </div>
-        <h2>퍼셉트론으로 AND 논리 회로 구현</h2>
-        <button
-          onClick={() => {
-            const result = doPerceptron();
-            console.log(result);
-          }}
-        >
-          테스트
-        </button>
-        <section>
-          <h3>function</h3>
-        </section>
+
         {/* 퍼셉트론 회로 */}
 
         <section>
@@ -79,7 +52,7 @@ const Perceptron = memo((props: PerceptronProps) => {
     if (x >= 0) return 1;
   };
   const computePerceptron = (x1: number, x2: number) => {
-    if (!w1 || !w2 || !bias) return;
+    if (w1 === null || w2 === null || bias === null) return;
     const temp = x1 * w1 + x2 * w2 + bias;
     return stepFunction(temp);
   };
@@ -157,7 +130,11 @@ const Perceptron = memo((props: PerceptronProps) => {
             ></input>
           </div>
         </div>
-        <button type="submit" form={`${compId}-form`}>
+        <button
+          type="submit"
+          className="rounded-md border-2 px-2 py-1 font-bold hover:bg-rose-300 hover:bg-opacity-30"
+          form={`${compId}-form`}
+        >
           설정하기
         </button>
       </section>
