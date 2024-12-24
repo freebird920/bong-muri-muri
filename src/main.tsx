@@ -10,7 +10,11 @@ import "./index.css";
 
 // import component
 import NavbarComp from "./components/navbar/NavbarComp.tsx";
-import route from "./route.tsx";
+import HomePage from "./app/page.tsx";
+import AboutPage from "./app/about/page.tsx";
+import DocPage from "./app/doc/page.tsx";
+import DocPerceptronPage from "./app/doc/perceptron/page.tsx";
+import BookReviewPage from "./app/book_review/page.tsx";
 
 const root = document.getElementById("root")!;
 createRoot(root).render(
@@ -18,9 +22,19 @@ createRoot(root).render(
     <BrowserRouter>
       <NavbarComp></NavbarComp>
       <Routes>
-        {route.map((element) => (
-          <Route key={element.path} {...element}></Route>
-        ))}
+        <Route path="/" element={<HomePage></HomePage>}></Route>
+        <Route path="/about" element={<AboutPage></AboutPage>}></Route>
+        <Route
+          path="/book_review"
+          element={<BookReviewPage></BookReviewPage>}
+        ></Route>
+        <Route path="/doc">
+          <Route index element={<DocPage></DocPage>} />
+          <Route
+            path="perceptron"
+            element={<DocPerceptronPage></DocPerceptronPage>}
+          ></Route>
+        </Route>
       </Routes>
     </BrowserRouter>
   </StrictMode>,
