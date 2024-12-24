@@ -64,6 +64,11 @@ const DocPerceptronPage = memo(() => {
           {/* 퍼셉트론 컨트롤러 */}
           <Perceptron y00={0} y01={1} y10={1} y11={1}></Perceptron>
         </section>
+        <section>
+          <h3>퍼셉트론 NAND 회로</h3>
+          {/* 퍼셉트론 컨트롤러 */}
+          <Perceptron y00={1} y01={1} y10={1} y11={0}></Perceptron>
+        </section>
       </article>
     </div>
   );
