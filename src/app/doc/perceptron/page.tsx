@@ -2,15 +2,53 @@ import { FormEvent, memo, useId, useState } from "react";
 
 const DocPerceptronPage = memo(() => {
   return (
-    <div>
-      <article>
-        <h1>퍼셉트론</h1>
-        <h1>퍼셉트론이란?</h1>
+    <div className="container mx-auto">
+      <article className="flex flex-col space-y-2">
+        <h1 className="text-xl font-extrabold">퍼셉트론</h1>
+        <p>
+          퍼셉트론(Perceptron)은 퍼셉트론은 입력값(x<sub>n</sub>)에 가중치(w
+          <sub>n</sub>)를 적용하고 바이어스(b)를 더한 가중합을 계산한 뒤,
+          활성함수(Active Function)를 통해 이진 출력(y)을 생성하는 단순 선형
+          분류 모델입니다.
+        </p>
+        <div>
+          <div className="grid grid-cols-7">
+            <div className="col-span-2 flex flex-col">
+              <div className="flex">
+                <p className="grow border-2 text-center">x1</p>
+                <p className="flex items-center justify-center">*</p>
+                <p className="grow border-2 text-center">w1</p>
+              </div>
+              <div className="flex">
+                <p className="grow border-2 text-center">x2</p>
+                <p className="flex items-center justify-center">*</p>
+                <p className="grow border-2 text-center">w2</p>
+              </div>
+            </div>
+            <div className="flex flex-col items-center justify-center">
+              <p className="flex items-center justify-center">→</p>
+              <p className="flex items-center justify-center">→</p>
+            </div>
+            <div className="col-span-2 flex items-center justify-center border-2">
+              <p>
+                {`activeFunction( `}
+                <span>∑</span>
+                <span>
+                  x<sub>n</sub>
+                </span>
+                <span>
+                  w<sub>n</sub>
+                </span>
+                {`   +   b)`}
+              </p>
+            </div>
+            <div className="flex items-center justify-center">→</div>
+            <div className="flex items-center justify-center border-2">y</div>
+          </div>
+        </div>
         <div className="border-2">
-          <h4 className="font-extrabold">Step Function</h4>
-          <p>입력이 0보다 작으면 0을, 입력이 0 이상이면 1을 출력하는 함수</p>
           <pre>
-            {`const stepFunction = (x:number)=>{\n  if(x<0) return 0;\n  if(x>=0) return 1;\n}`}
+            {`/**\n * stepFunction\n * 입력이 0보다 작으면 0을, 입력이 0 이상이면 1을 출력하는 함수\n * @param x: number\n */\nconst stepFunction = (x:number)=>{\n  if(x<0) return 0;\n  if(x>=0) return 1;\n}`}
           </pre>
         </div>
 
@@ -144,7 +182,7 @@ const Perceptron = memo((props: PerceptronProps) => {
         <p>w1: {w1}</p>
         <p>w2: {w2}</p>
       </div>
-      <div className="container">
+      <div className="">
         <h4>진리표</h4>
         <ul className="border-2 text-center">
           <li className="grid grid-cols-4 font-bold">
