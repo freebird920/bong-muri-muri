@@ -5,6 +5,7 @@ type ContentInfo = {
 };
 const tableOfContent: ContentInfo[] = [
   { title: "perceptron", path: "/doc/perceptron" },
+  { title: "loss function", path: "/doc/loss_function" },
 ];
 const DocPage = memo(() => {
   return (
