@@ -11,6 +11,9 @@ const DocPerceptronPage = memo(() => {
           활성함수(Active Function)를 통해 이진 출력(y)을 생성하는 단순 선형
           분류 모델입니다.
         </p>
+        <a href="https://www.ebssw.kr/edc/cultursens/cultursensMvpView.do?alctcrSn=57365&cntntsSn=26341&stepSn=56471&lctreSn=1853597&pageIndex=1">
+          강의 영상
+        </a>
         <div>
           <div className="grid grid-cols-7 gap-4">
             <div className="col-span-2 flex flex-col space-y-2">
