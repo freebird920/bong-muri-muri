@@ -2,7 +2,7 @@ import { FormEvent, memo, useId, useState } from "react";
 
 const DocPerceptronPage = memo(() => {
   return (
-    <div className="container mx-auto">
+    <div className="container mx-auto px-2 pb-2">
       <article className="flex flex-col space-y-2">
         <h1 className="text-xl font-extrabold">퍼셉트론</h1>
         <p>
@@ -49,7 +49,7 @@ const DocPerceptronPage = memo(() => {
           </div>
         </div>
         <div className="rounded-md border-2 p-2">
-          <pre>
+          <pre className="whitespace-break-spaces">
             {`/**\n * stepFunction\n * 입력이 0보다 작으면 0을, 입력이 0 이상이면 1을 출력하는 함수\n * @param x: number\n * @return 0 | 1\n */\nconst stepFunction = (x:number)=>{\n  if(x<0) return 0;\n  if(x>=0) return 1;\n}`}
           </pre>
         </div>
@@ -131,27 +131,16 @@ const Perceptron = memo((props: PerceptronProps) => {
       <section className="grid grid-cols-3 gap-4">
         <section className="flex flex-col items-center justify-center space-y-2 rounded-md border-2 p-2">
           <form id={`${compId}-form`} onSubmit={handleFormSubmit}></form>
+
           <div className="flex space-x-2">
-            <label htmlFor={`${compId}-input-bias`}>BIAS</label>
-            <div className="grow">
-              <input
-                form={`${compId}-form`}
-                id={`${compId}-input-bias`}
-                name="bias"
-                className="border-2"
-                placeholder="BIAS"
-                type="number"
-                step="any"
-              ></input>
-            </div>
-          </div>
-          <div className="flex space-x-2">
-            <label htmlFor={`${compId}-input-w1`}>w1</label>
-            <div className="grow">
+            <label className="text-xs" htmlFor={`${compId}-input-w1`}>
+              w1
+            </label>
+            <div className="shrink">
               <input
                 form={`${compId}-form`}
                 id={`${compId}-input-w1`}
-                className="border-2"
+                className="w-full border-2 text-sm"
                 placeholder="w1"
                 name="w1"
                 type="number"
@@ -160,12 +149,14 @@ const Perceptron = memo((props: PerceptronProps) => {
             </div>
           </div>
           <div className="flex space-x-2">
-            <label htmlFor={`${compId}-input-w2`}>w2</label>
-            <div className="grow">
+            <label className="text-xs" htmlFor={`${compId}-input-w2`}>
+              w2
+            </label>
+            <div className="shrink">
               <input
                 form={`${compId}-form`}
                 id={`${compId}-input-w2`}
-                className="border-2"
+                className="w-full border-2 text-sm"
                 placeholder="w2"
                 type="number"
                 name="w2"
@@ -173,13 +164,31 @@ const Perceptron = memo((props: PerceptronProps) => {
               ></input>
             </div>
           </div>
-          <button
-            type="submit"
-            className="rounded-md border-2 px-2 py-1 font-bold hover:bg-rose-300 hover:bg-opacity-30"
-            form={`${compId}-form`}
-          >
-            설정하기
-          </button>
+          <div className="flex space-x-2">
+            <label className="text-xs" htmlFor={`${compId}-input-bias`}>
+              BIAS
+            </label>
+            <div className="shrink">
+              <input
+                form={`${compId}-form`}
+                id={`${compId}-input-bias`}
+                name="bias"
+                className="w-full border-2 text-sm"
+                placeholder="BIAS"
+                type="number"
+                step="any"
+              ></input>
+            </div>
+          </div>
+          <div>
+            <button
+              type="submit"
+              className="rounded-md border-2 px-2 py-1 font-bold hover:bg-rose-300 hover:bg-opacity-30"
+              form={`${compId}-form`}
+            >
+              설정하기
+            </button>
+          </div>
         </section>
         <div className="rounded-md border-2 p-2">
           <h4 className="font-bold">현재 세팅</h4>
