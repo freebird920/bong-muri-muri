@@ -6,7 +6,7 @@ const NavbarComp = memo(() => {
   return (
     <nav className="flex flex-row items-center justify-center space-x-2">
       <NavLink to="/" className={({ isActive }) => (isActive ? "active" : "")}>
-        Home
+        봉딥연
       </NavLink>
       <NavLink
         to="/about"
