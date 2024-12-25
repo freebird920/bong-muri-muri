@@ -12,14 +12,14 @@ const DocPerceptronPage = memo(() => {
           분류 모델입니다.
         </p>
         <div>
-          <div className="grid grid-cols-7">
-            <div className="col-span-2 flex flex-col">
-              <div className="flex">
+          <div className="grid grid-cols-7 gap-4">
+            <div className="col-span-2 flex flex-col space-y-2">
+              <div className="flex space-x-2">
                 <p className="grow border-2 text-center">x1</p>
                 <p className="flex items-center justify-center">*</p>
                 <p className="grow border-2 text-center">w1</p>
               </div>
-              <div className="flex">
+              <div className="flex space-x-2">
                 <p className="grow border-2 text-center">x2</p>
                 <p className="flex items-center justify-center">*</p>
                 <p className="grow border-2 text-center">w2</p>
@@ -29,46 +29,49 @@ const DocPerceptronPage = memo(() => {
               <p className="flex items-center justify-center">→</p>
               <p className="flex items-center justify-center">→</p>
             </div>
-            <div className="col-span-2 flex items-center justify-center border-2">
+            <div className="col-span-2 flex items-center justify-center rounded-md border-2">
               <p>
                 {`activeFunction( `}
-                <span>∑</span>
-                <span>
-                  x<sub>n</sub>
-                </span>
-                <span>
-                  w<sub>n</sub>
-                </span>
-                {`   +   b)`}
+                <span className="text-xl font-extrabold">∑</span>
+                <span className="font-bold">x</span>
+                <sub>n</sub>
+                <span className="font-bold">w</span>
+                <sub>n</sub>
+                {`   +   `}
+                <span className="font-bold">b</span>
+                {`)`}
               </p>
             </div>
             <div className="flex items-center justify-center">→</div>
-            <div className="flex items-center justify-center border-2">y</div>
+            <div className="flex items-center justify-center rounded-md border-2 font-extrabold">
+              y
+            </div>
           </div>
         </div>
-        <div className="border-2">
+        <div className="rounded-md border-2 p-2">
           <pre>
-            {`/**\n * stepFunction\n * 입력이 0보다 작으면 0을, 입력이 0 이상이면 1을 출력하는 함수\n * @param x: number\n */\nconst stepFunction = (x:number)=>{\n  if(x<0) return 0;\n  if(x>=0) return 1;\n}`}
+            {`/**\n * stepFunction\n * 입력이 0보다 작으면 0을, 입력이 0 이상이면 1을 출력하는 함수\n * @param x: number\n * @return 0 | 1\n */\nconst stepFunction = (x:number)=>{\n  if(x<0) return 0;\n  if(x>=0) return 1;\n}`}
           </pre>
         </div>
 
         {/* 퍼셉트론 회로 */}
-
-        <section>
-          <h3>퍼셉트론 AND 회로</h3>
-          {/* 퍼셉트론 컨트롤러 */}
-          <Perceptron y00={0} y01={0} y10={0} y11={1}></Perceptron>
-        </section>
-        <section>
-          <h3>퍼셉트론 OR 회로</h3>
-          {/* 퍼셉트론 컨트롤러 */}
-          <Perceptron y00={0} y01={1} y10={1} y11={1}></Perceptron>
-        </section>
-        <section>
-          <h3>퍼셉트론 NAND 회로</h3>
-          {/* 퍼셉트론 컨트롤러 */}
-          <Perceptron y00={1} y01={1} y10={1} y11={0}></Perceptron>
-        </section>
+        {[
+          { title: "AND", array: [0, 0, 0, 1] },
+          { title: "OR", array: [0, 1, 1, 1] },
+          { title: "NAND", array: [1, 1, 1, 0] },
+        ].map((element) => {
+          return (
+            <div key={`${element.title}-perceptron`}>
+              <h3 className="font-extrabold">{element.title} 게이트</h3>
+              <Perceptron
+                y00={element.array[0] as 0 | 1}
+                y01={element.array[1] as 0 | 1}
+                y10={element.array[2] as 0 | 1}
+                y11={element.array[3] as 0 | 1}
+              ></Perceptron>
+            </div>
+          );
+        })}
       </article>
     </div>
   );
@@ -125,103 +128,146 @@ const Perceptron = memo((props: PerceptronProps) => {
 
   return (
     <div>
-      <div>
-        <h4>stepFunction</h4>
-        <p>입력이 0보다 작으면 0, 0 이상이면 1을 출력함.</p>
-      </div>
-      <section>
-        <form id={`${compId}-form`} onSubmit={handleFormSubmit}></form>
-        <div className="flex">
-          <label htmlFor={`${compId}-input-bias`}>BIAS</label>
-          <div className="grow">
-            <input
-              form={`${compId}-form`}
-              id={`${compId}-input-bias`}
-              name="bias"
-              className="border-2"
-              placeholder="BIAS"
-              type="number"
-              step="any"
-            ></input>
+      <section className="grid grid-cols-3 gap-4">
+        <section className="flex flex-col items-center justify-center space-y-2 rounded-md border-2 p-2">
+          <form id={`${compId}-form`} onSubmit={handleFormSubmit}></form>
+          <div className="flex space-x-2">
+            <label htmlFor={`${compId}-input-bias`}>BIAS</label>
+            <div className="grow">
+              <input
+                form={`${compId}-form`}
+                id={`${compId}-input-bias`}
+                name="bias"
+                className="border-2"
+                placeholder="BIAS"
+                type="number"
+                step="any"
+              ></input>
+            </div>
           </div>
-        </div>
-        <div className="flex">
-          <label htmlFor={`${compId}-input-w1`}>w1</label>
-          <div className="grow">
-            <input
-              form={`${compId}-form`}
-              id={`${compId}-input-w1`}
-              className="border-2"
-              placeholder="w1"
-              name="w1"
-              type="number"
-              step="any"
-            ></input>
+          <div className="flex space-x-2">
+            <label htmlFor={`${compId}-input-w1`}>w1</label>
+            <div className="grow">
+              <input
+                form={`${compId}-form`}
+                id={`${compId}-input-w1`}
+                className="border-2"
+                placeholder="w1"
+                name="w1"
+                type="number"
+                step="any"
+              ></input>
+            </div>
           </div>
-        </div>
-        <div className="flex">
-          <label htmlFor={`${compId}-input-w2`}>w2</label>
-          <div className="grow">
-            <input
-              form={`${compId}-form`}
-              id={`${compId}-input-w2`}
-              className="border-2"
-              placeholder="w2"
-              type="number"
-              name="w2"
-              step="any"
-            ></input>
+          <div className="flex space-x-2">
+            <label htmlFor={`${compId}-input-w2`}>w2</label>
+            <div className="grow">
+              <input
+                form={`${compId}-form`}
+                id={`${compId}-input-w2`}
+                className="border-2"
+                placeholder="w2"
+                type="number"
+                name="w2"
+                step="any"
+              ></input>
+            </div>
           </div>
+          <button
+            type="submit"
+            className="rounded-md border-2 px-2 py-1 font-bold hover:bg-rose-300 hover:bg-opacity-30"
+            form={`${compId}-form`}
+          >
+            설정하기
+          </button>
+        </section>
+        <div className="rounded-md border-2 p-2">
+          <h4 className="font-bold">현재 세팅</h4>
+          <p>
+            w1:{" "}
+            {w1 ?? (
+              <span className="font-bold text-neutral-500 text-opacity-50">
+                적으세요
+              </span>
+            )}
+          </p>
+          <p>
+            w2:{" "}
+            {w2 ?? (
+              <span className="font-bold text-neutral-500 text-opacity-50">
+                적으세요
+              </span>
+            )}
+          </p>
+          <p>
+            bias:{" "}
+            {bias ?? (
+              <span className="font-bold text-neutral-500 text-opacity-50">
+                적으세요
+              </span>
+            )}
+          </p>
         </div>
-        <button
-          type="submit"
-          className="rounded-md border-2 px-2 py-1 font-bold hover:bg-rose-300 hover:bg-opacity-30"
-          form={`${compId}-form`}
-        >
-          설정하기
-        </button>
+        <div className="rounded-md border-2 p-2">
+          <h4 className="font-bold">진리표</h4>
+          <ul className="text-center">
+            <li className="grid grid-cols-4 font-bold">
+              <p>x1</p>
+              <p>x2</p>
+              <p>y</p>
+              <p>y*</p>
+            </li>
+            <li className="grid grid-cols-4">
+              <p>0</p>
+              <p>0</p>
+              <p>{props.y00}</p>
+              <p>
+                {computePerceptron(0, 0) ?? (
+                  <span className="font-bold text-neutral-500 text-opacity-50">
+                    ??
+                  </span>
+                )}
+              </p>
+            </li>
+            <li className="grid grid-cols-4">
+              <p>0</p>
+              <p>1</p>
+              <p>{props.y01}</p>
+              <p>
+                {computePerceptron(0, 1) ?? (
+                  <span className="font-bold text-neutral-500 text-opacity-50">
+                    ??
+                  </span>
+                )}
+              </p>
+            </li>
+            <li className="grid grid-cols-4">
+              <p>1</p>
+              <p>0</p>
+              <p>{props.y10}</p>
+              <p>
+                {computePerceptron(1, 0) ?? (
+                  <span className="font-bold text-neutral-500 text-opacity-50">
+                    ??
+                  </span>
+                )}
+              </p>
+            </li>
+            <li className="grid grid-cols-4">
+              <p>1</p>
+              <p>1</p>
+              <p>{props.y11}</p>
+              <p>
+                {computePerceptron(1, 1) ?? (
+                  <span className="font-bold text-neutral-500 text-opacity-50">
+                    ??
+                  </span>
+                )}
+              </p>
+            </li>
+          </ul>
+        </div>
       </section>
-      <div>
-        <h4>상태</h4>
-        <p>bias: {bias}</p>
-        <p>w1: {w1}</p>
-        <p>w2: {w2}</p>
-      </div>
-      <div className="">
-        <h4>진리표</h4>
-        <ul className="border-2 text-center">
-          <li className="grid grid-cols-4 font-bold">
-            <p>x1</p>
-            <p>x2</p>
-            <p>y</p>
-            <p>y*</p>
-          </li>
-          <li className="grid grid-cols-4">
-            <p>0</p>
-            <p>0</p>
-            <p>{props.y00}</p>
-            <p>{computePerceptron(0, 0)}</p>
-          </li>
-          <li className="grid grid-cols-4">
-            <p>0</p>
-            <p>1</p>
-            <p>{props.y01}</p>
-            <p>{computePerceptron(0, 1)}</p>
-          </li>
-          <li className="grid grid-cols-4">
-            <p>1</p>
-            <p>0</p>
-            <p>{props.y10}</p>
-            <p>{computePerceptron(1, 0)}</p>
-          </li>
-          <li className="grid grid-cols-4">
-            <p>1</p>
-            <p>1</p>
-            <p>{props.y11}</p>
-            <p>{computePerceptron(1, 1)}</p>
-          </li>
-        </ul>
-      </div>
     </div>
   );
 });
