@@ -75,6 +75,10 @@ const DocPerceptronPage = memo(() => {
             </div>
           );
         })}
+        <div>
+          <h3>XOR 게이트</h3>
+          <XorPerceptron></XorPerceptron>
+        </div>
       </article>
     </div>
   );
@@ -82,6 +86,426 @@ const DocPerceptronPage = memo(() => {
 
 DocPerceptronPage.displayName = "DocPerceptronPage";
 export default DocPerceptronPage;
+
+type PerceptronParams = {
+  w1: number | undefined;
+  w2: number | undefined;
+  bias: number | undefined;
+};
+const XorPerceptron = memo(() => {
+  const [perceptron1, setPerceptron1] = useState<PerceptronParams>({
+    w1: 0,
+    w2: 0,
+    bias: 0,
+  });
+  const [perceptron2, setPerceptron2] = useState<PerceptronParams>({
+    w1: 0,
+    w2: 0,
+    bias: 0,
+  });
+  const [perceptron3, setPerceptron3] = useState<PerceptronParams>({
+    w1: 0,
+    w2: 0,
+    bias: 0,
+  });
+  const [perceptron4, setPerceptron4] = useState<PerceptronParams>({
+    w1: 0,
+    w2: 0,
+    bias: 0,
+  });
+  const [perceptron5, setPerceptron5] = useState<PerceptronParams>({
+    w1: 0,
+    w2: 0,
+    bias: 0,
+  });
+  const [perceptron6, setPerceptron6] = useState<PerceptronParams>({
+    w1: 0,
+    w2: 0,
+    bias: 0,
+  });
+  return (
+    <div className="">
+      <p>XOR은 x1과 x2가 다를 때면 1, 같으면 0을 출력한다.</p>
+      <section className="grid grid-cols-4">
+        <section className="flex flex-col">
+          <div className="rounded-md border-2 p-2">
+            <h4 className="text-center font-extrabold">P1</h4>
+            <section>
+              <div className="flex items-center justify-center space-x-2">
+                <label htmlFor="p1-w1" className="text-sm">
+                  w1
+                </label>
+                <div className="shrink">
+                  <input
+                    className="w-full rounded-md border-2 text-sm"
+                    id="p1-w1"
+                    placeholder="w1"
+                    type="number"
+                    step="any"
+                    value={perceptron1.w1}
+                    onChange={(event) => {
+                      // Create a new object to avoid mutating the state directly
+                      const newPerceptron = {
+                        ...perceptron1,
+                        w1: Number(event.currentTarget.value),
+                      };
+                      setPerceptron1(newPerceptron);
+                    }}
+                  ></input>
+                </div>
+              </div>
+              <div className="flex items-center justify-center space-x-2">
+                <label htmlFor="p1-w2" className="text-sm">
+                  w2
+                </label>
+                <div className="shrink">
+                  <input
+                    className="w-full rounded-md border-2 text-sm"
+                    id="p1-w2"
+                    type="number"
+                    step="any"
+                    placeholder="w2"
+                    value={perceptron1.w2}
+                    onChange={(event) => {
+                      // Create a new object to avoid mutating the state directly
+                      const newPerceptron = {
+                        ...perceptron1,
+                        w2: Number(event.currentTarget.value),
+                      };
+                      setPerceptron1(newPerceptron);
+                    }}
+                  ></input>
+                </div>
+              </div>
+              <div className="flex items-center justify-center space-x-2">
+                <label htmlFor="p1-w2" className="text-sm">
+                  bias
+                </label>
+                <div className="shrink items-center">
+                  <input
+                    className="w-full rounded-md border-2 text-sm"
+                    id="p1-bias"
+                    type="number"
+                    placeholder="bias"
+                    step="any"
+                    value={perceptron1.bias}
+                    onChange={(event) => {
+                      // Create a new object to avoid mutating the state directly
+                      const newPerceptron = {
+                        ...perceptron1,
+                        bias: Number(event.currentTarget.value),
+                      };
+                      setPerceptron1(newPerceptron);
+                    }}
+                  ></input>
+                </div>
+              </div>
+            </section>
+          </div>
+          <div className="rounded-md border-2 p-2">
+            <h4 className="text-center font-extrabold">P2</h4>
+            <section>
+              <div className="flex items-center justify-center space-x-2">
+                <label htmlFor="p1-w1" className="text-sm">
+                  w1
+                </label>
+                <div className="shrink">
+                  <input
+                    className="w-full rounded-md border-2 text-sm"
+                    id="p1-w1"
+                    placeholder="w1"
+                    type="number"
+                    step="any"
+                    value={perceptron2.w1}
+                    onChange={(event) => {
+                      // Create a new object to avoid mutating the state directly
+                      const newPerceptron: PerceptronParams = {
+                        ...perceptron2,
+                        w1: Number(event.currentTarget.value),
+                      };
+                      setPerceptron2(newPerceptron);
+                    }}
+                  ></input>
+                </div>
+              </div>
+              <div className="flex items-center justify-center space-x-2">
+                <label htmlFor="p1-w2" className="text-sm">
+                  w2
+                </label>
+                <div className="shrink">
+                  <input
+                    className="w-full rounded-md border-2 text-sm"
+                    id="p1-w2"
+                    type="number"
+                    step="any"
+                    placeholder="w2"
+                    value={perceptron2.w2}
+                    onChange={(event) => {
+                      // Create a new object to avoid mutating the state directly
+                      const newPerceptron: PerceptronParams = {
+                        ...perceptron2,
+                        w2: Number(event.currentTarget.value),
+                      };
+                      setPerceptron2(newPerceptron);
+                    }}
+                  ></input>
+                </div>
+              </div>
+              <div className="flex items-center justify-center space-x-2">
+                <label htmlFor="p1-w2" className="text-sm">
+                  bias
+                </label>
+                <div className="shrink items-center">
+                  <input
+                    className="w-full rounded-md border-2 text-sm"
+                    id="p1-bias"
+                    type="number"
+                    placeholder="bias"
+                    step="any"
+                    value={perceptron2.bias}
+                    onChange={(event) => {
+                      // Create a new object to avoid mutating the state directly
+                      const newPerceptron: PerceptronParams = {
+                        ...perceptron2,
+                        bias: Number(event.currentTarget.value),
+                      };
+                      setPerceptron2(newPerceptron);
+                    }}
+                  ></input>
+                </div>
+              </div>
+            </section>
+          </div>
+          <div className="rounded-md border-2 p-2">
+            <h4 className="text-center font-extrabold">P3</h4>
+            <section>
+              <div className="flex items-center justify-center space-x-2">
+                <label htmlFor="p1-w1" className="text-sm">
+                  w1
+                </label>
+                <div className="shrink">
+                  <input
+                    className="w-full rounded-md border-2 text-sm"
+                    id="p1-w1"
+                    placeholder="w1"
+                    type="number"
+                    step="any"
+                    value={perceptron3.w1}
+                    onChange={(event) => {
+                      // Create a new object to avoid mutating the state directly
+                      const newPerceptron: PerceptronParams = {
+                        ...perceptron3,
+                        w1: Number(event.currentTarget.value),
+                      };
+                      setPerceptron3(newPerceptron);
+                    }}
+                  ></input>
+                </div>
+              </div>
+              <div className="flex items-center justify-center space-x-2">
+                <label htmlFor="p1-w2" className="text-sm">
+                  w2
+                </label>
+                <div className="shrink">
+                  <input
+                    className="w-full rounded-md border-2 text-sm"
+                    id="p1-w2"
+                    type="number"
+                    step="any"
+                    placeholder="w2"
+                    value={perceptron3.w2}
+                    onChange={(event) => {
+                      // Create a new object to avoid mutating the state directly
+                      const newPerceptron: PerceptronParams = {
+                        ...perceptron3,
+                        w2: Number(event.currentTarget.value),
+                      };
+                      setPerceptron3(newPerceptron);
+                    }}
+                  ></input>
+                </div>
+              </div>
+              <div className="flex items-center justify-center space-x-2">
+                <label htmlFor="p1-w2" className="text-sm">
+                  bias
+                </label>
+                <div className="shrink items-center">
+                  <input
+                    className="w-full rounded-md border-2 text-sm"
+                    id="p1-bias"
+                    type="number"
+                    placeholder="bias"
+                    step="any"
+                    value={perceptron3.bias}
+                    onChange={(event) => {
+                      // Create a new object to avoid mutating the state directly
+                      const newPerceptron: PerceptronParams = {
+                        ...perceptron3,
+                        bias: Number(event.currentTarget.value),
+                      };
+                      setPerceptron3(newPerceptron);
+                    }}
+                  ></input>
+                </div>
+              </div>
+            </section>
+          </div>
+        </section>
+        <section className="grid grid-rows-2">
+          <div className="rounded-md border-2 p-2">
+            <h4 className="text-center font-extrabold">P4</h4>
+            <section>
+              <div className="flex items-center justify-center space-x-2">
+                <label htmlFor="p1-w1" className="text-sm">
+                  w1
+                </label>
+                <div className="shrink">
+                  <input
+                    className="w-full rounded-md border-2 text-sm"
+                    id="p1-w1"
+                    placeholder="w1"
+                    type="number"
+                    step="any"
+                    value={perceptron4.w1}
+                    onChange={(event) => {
+                      // Create a new object to avoid mutating the state directly
+                      const newPerceptron = {
+                        ...perceptron4,
+                        w1: Number(event.currentTarget.value),
+                      };
+                      setPerceptron4(newPerceptron);
+                    }}
+                  ></input>
+                </div>
+              </div>
+              <div className="flex items-center justify-center space-x-2">
+                <label htmlFor="p1-w2" className="text-sm">
+                  w2
+                </label>
+                <div className="shrink">
+                  <input
+                    className="w-full rounded-md border-2 text-sm"
+                    id="p1-w2"
+                    type="number"
+                    step="any"
+                    placeholder="w2"
+                    value={perceptron4.w2}
+                    onChange={(event) => {
+                      // Create a new object to avoid mutating the state directly
+                      const newPerceptron = {
+                        ...perceptron4,
+                        w2: Number(event.currentTarget.value),
+                      };
+                      setPerceptron4(newPerceptron);
+                    }}
+                  ></input>
+                </div>
+              </div>
+              <div className="flex items-center justify-center space-x-2">
+                <label htmlFor="p1-w2" className="text-sm">
+                  bias
+                </label>
+                <div className="shrink items-center">
+                  <input
+                    className="w-full rounded-md border-2 text-sm"
+                    id="p1-bias"
+                    type="number"
+                    placeholder="bias"
+                    step="any"
+                    value={perceptron4.bias}
+                    onChange={(event) => {
+                      // Create a new object to avoid mutating the state directly
+                      const newPerceptron = {
+                        ...perceptron4,
+                        bias: Number(event.currentTarget.value),
+                      };
+                      setPerceptron4(newPerceptron);
+                    }}
+                  ></input>
+                </div>
+              </div>
+            </section>
+          </div>
+
+          <div className="rounded-md border-2 p-2">
+            <h4 className="text-center font-extrabold">P5</h4>
+            <section>
+              <div className="flex items-center justify-center space-x-2">
+                <label htmlFor="p1-w1" className="text-sm">
+                  w1
+                </label>
+                <div className="shrink">
+                  <input
+                    className="w-full rounded-md border-2 text-sm"
+                    id="p1-w1"
+                    placeholder="w1"
+                    type="number"
+                    step="any"
+                    value={perceptron5.w1}
+                    onChange={(event) => {
+                      // Create a new object to avoid mutating the state directly
+                      const newPerceptron: PerceptronParams = {
+                        ...perceptron5,
+                        w1: Number(event.currentTarget.value),
+                      };
+                      setPerceptron5(newPerceptron);
+                    }}
+                  ></input>
+                </div>
+              </div>
+              <div className="flex items-center justify-center space-x-2">
+                <label htmlFor="p1-w2" className="text-sm">
+                  w2
+                </label>
+                <div className="shrink">
+                  <input
+                    className="w-full rounded-md border-2 text-sm"
+                    id="p1-w2"
+                    type="number"
+                    step="any"
+                    placeholder="w2"
+                    value={perceptron5.w2}
+                    onChange={(event) => {
+                      // Create a new object to avoid mutating the state directly
+                      const newPerceptron: PerceptronParams = {
+                        ...perceptron5,
+                        w2: Number(event.currentTarget.value),
+                      };
+                      setPerceptron5(newPerceptron);
+                    }}
+                  ></input>
+                </div>
+              </div>
+              <div className="flex items-center justify-center space-x-2">
+                <label htmlFor="p1-w2" className="text-sm">
+                  bias
+                </label>
+                <div className="shrink items-center">
+                  <input
+                    className="w-full rounded-md border-2 text-sm"
+                    id="p1-bias"
+                    type="number"
+                    placeholder="bias"
+                    step="any"
+                    value={perceptron5.bias}
+                    onChange={(event) => {
+                      // Create a new object to avoid mutating the state directly
+                      const newPerceptron: PerceptronParams = {
+                        ...perceptron5,
+                        bias: Number(event.currentTarget.value),
+                      };
+                      setPerceptron5(newPerceptron);
+                    }}
+                  ></input>
+                </div>
+              </div>
+            </section>
+          </div>
+        </section>
+      </section>
+    </div>
+  );
+});
 
 interface PerceptronProps {
   y00: 0 | 1;
