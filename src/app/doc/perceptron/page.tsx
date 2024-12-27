@@ -76,7 +76,7 @@ const DocPerceptronPage = memo(() => {
           );
         })}
         <div>
-          <h3>XOR 게이트</h3>
+          <h3 className="text-lg font-extrabold">XOR 게이트</h3>
           <XorPerceptron></XorPerceptron>
         </div>
       </article>
@@ -88,11 +88,26 @@ DocPerceptronPage.displayName = "DocPerceptronPage";
 export default DocPerceptronPage;
 
 type PerceptronParams = {
-  w1: number | undefined;
-  w2: number | undefined;
-  bias: number | undefined;
+  w1: number;
+  w2: number;
+  bias: number;
 };
 const XorPerceptron = memo(() => {
+  const stepFunction = (x: number) => {
+    if (isNaN(x)) throw new Error("isNan()");
+    if (x < 0) return 0;
+    if (x >= 0) return 1;
+    throw new Error("wtf");
+  };
+  const perceptonCompute = (
+    perceptronParam: PerceptronParams,
+    x1: number,
+    x2: number,
+  ): 0 | 1 => {
+    const result =
+      x1 * perceptronParam.w1 + x2 * perceptronParam.w2 + perceptronParam.bias;
+    return stepFunction(result);
+  };
   const [perceptron1, setPerceptron1] = useState<PerceptronParams>({
     w1: 0,
     w2: 0,
@@ -126,8 +141,8 @@ const XorPerceptron = memo(() => {
   return (
     <div className="">
       <p>XOR은 x1과 x2가 다를 때면 1, 같으면 0을 출력한다.</p>
-      <section className="grid grid-cols-4">
-        <section className="flex flex-col">
+      <section className="grid grid-cols-4 gap-2">
+        <section className="flex flex-col space-y-2">
           <div className="rounded-md border-2 p-2">
             <h4 className="text-center font-extrabold">P1</h4>
             <section>
@@ -351,7 +366,7 @@ const XorPerceptron = memo(() => {
             </section>
           </div>
         </section>
-        <section className="grid grid-rows-2">
+        <section className="grid grid-rows-2 space-y-2">
           <div className="rounded-md border-2 p-2">
             <h4 className="text-center font-extrabold">P4</h4>
             <section>
@@ -501,6 +516,140 @@ const XorPerceptron = memo(() => {
               </div>
             </section>
           </div>
+        </section>
+        <section className="grid grid-rows-1">
+          <div className="rounded-md border-2 p-2">
+            <h4 className="text-center font-extrabold">P6</h4>
+            <section>
+              <div className="flex items-center justify-center space-x-2">
+                <label htmlFor="p1-w1" className="text-sm">
+                  w1
+                </label>
+                <div className="shrink">
+                  <input
+                    className="w-full rounded-md border-2 text-sm"
+                    id="p1-w1"
+                    placeholder="w1"
+                    type="number"
+                    step="any"
+                    value={perceptron6.w1}
+                    onChange={(event) => {
+                      // Create a new object to avoid mutating the state directly
+                      const newPerceptron = {
+                        ...perceptron6,
+                        w1: Number(event.currentTarget.value),
+                      };
+                      setPerceptron6(newPerceptron);
+                    }}
+                  ></input>
+                </div>
+              </div>
+              <div className="flex items-center justify-center space-x-2">
+                <label htmlFor="p1-w2" className="text-sm">
+                  w2
+                </label>
+                <div className="shrink">
+                  <input
+                    className="w-full rounded-md border-2 text-sm"
+                    id="p1-w2"
+                    type="number"
+                    step="any"
+                    placeholder="w2"
+                    value={perceptron6.w2}
+                    onChange={(event) => {
+                      // Create a new object to avoid mutating the state directly
+                      const newPerceptron = {
+                        ...perceptron6,
+                        w2: Number(event.currentTarget.value),
+                      };
+                      setPerceptron6(newPerceptron);
+                    }}
+                  ></input>
+                </div>
+              </div>
+              <div className="flex items-center justify-center space-x-2">
+                <label htmlFor="p1-w2" className="text-sm">
+                  bias
+                </label>
+                <div className="shrink items-center">
+                  <input
+                    className="w-full rounded-md border-2 text-sm"
+                    id="p1-bias"
+                    type="number"
+                    placeholder="bias"
+                    step="any"
+                    value={perceptron6.bias}
+                    onChange={(event) => {
+                      // Create a new object to avoid mutating the state directly
+                      const newPerceptron = {
+                        ...perceptron6,
+                        bias: Number(event.currentTarget.value),
+                      };
+                      setPerceptron6(newPerceptron);
+                    }}
+                  ></input>
+                </div>
+              </div>
+            </section>
+          </div>
+        </section>
+        <section className="rounded-md border-2 p-2">
+          <h4>진리표</h4>
+          <section className="flex flex-col items-center justify-center">
+            <div className="grid w-full grid-cols-4">
+              <div className="text-center font-bold">x1</div>
+              <div className="text-center font-bold">x2</div>
+              <div className="text-center font-bold">y</div>
+              <div className="text-center font-bold">y*</div>
+            </div>
+            {[
+              [0, 0],
+              [0, 1],
+              [1, 0],
+              [1, 1],
+            ].map((element, index) => {
+              const resultP1 = perceptonCompute(
+                perceptron1,
+                element[0],
+                element[1],
+              );
+              const resultP2 = perceptonCompute(
+                perceptron2,
+                element[0],
+                element[1],
+              );
+              const resultP3 = perceptonCompute(
+                perceptron3,
+                element[0],
+                element[1],
+              );
+              const resultP4 = perceptonCompute(
+                perceptron4,
+                resultP1,
+                resultP2,
+              );
+              const resultP5 = perceptonCompute(
+                perceptron5,
+                resultP2,
+                resultP3,
+              );
+              const resultP6 = perceptonCompute(
+                perceptron6,
+                resultP4,
+                resultP5,
+              );
+              return (
+                <div className="grid w-full grid-cols-4" key={`jinri-${index}`}>
+                  <div className="text-center">{element[0]}</div>
+                  <div className="text-center">{element[1]}</div>
+                  <div className="text-center">
+                    {element[0] !== element[1] ? 1 : 0}
+                  </div>
+                  <div className="text-center">{resultP6}</div>
+                </div>
+              );
+            })}
+          </section>
         </section>
       </section>
     </div>
