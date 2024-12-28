@@ -139,8 +139,169 @@ const XorPerceptron = memo(() => {
     bias: 0,
   });
   return (
-    <div className="">
+    <div className="flex flex-col space-y-2">
       <p>XOR은 x1과 x2가 다를 때면 1, 같으면 0을 출력한다.</p>
+      <h4>XOR 게이트 만들기</h4>
+      <div className="grid grid-cols-3 gap-4 p-4 font-mono">
+        <section className="grid grid-rows-1 gap-4">
+          <div className="grid grid-cols-4 rounded-md border-2 p-2">
+            <div className="grid grid-rows-1">
+              <p>
+                <span>
+                  x<sub>1</sub>
+                </span>
+                <span>→</span>
+              </p>
+              <p>
+                <span>
+                  x<sub>2</sub>
+                </span>
+                <span>→</span>
+              </p>
+            </div>
+            <div className="grid grid-rows-1 items-center text-center">
+              <div className="flex">P1</div>
+            </div>
+            <div className="grid grid-rows-1 items-center text-center">→</div>
+            <div className="grid grid-rows-1 items-center text-center">
+              <span>
+                y<sub>1</sub>
+              </span>
+            </div>
+          </div>
+          <div className="grid grid-cols-4 rounded-md border-2 p-2">
+            <div className="grid grid-rows-1">
+              <p>
+                <span>
+                  x<sub>1</sub>
+                </span>
+                <span>→</span>
+              </p>
+              <p>
+                <span>
+                  x<sub>2</sub>
+                </span>
+                <span>→</span>
+              </p>
+            </div>
+            <div className="grid grid-rows-1 items-center text-center">
+              <div className="flex">P2</div>
+            </div>
+            <div className="grid grid-rows-1 items-center text-center">→</div>
+            <div className="grid grid-rows-1 items-center text-center">
+              <span>
+                y<sub>2</sub>
+              </span>
+            </div>
+          </div>
+          <div className="grid grid-cols-4 rounded-md border-2 p-2">
+            <div className="grid grid-rows-1">
+              <p>
+                <span>
+                  x<sub>1</sub>
+                </span>
+                <span>→</span>
+              </p>
+              <p>
+                <span>
+                  x<sub>2</sub>
+                </span>
+                <span>→</span>
+              </p>
+            </div>
+            <div className="grid grid-rows-1 items-center text-center">
+              <div className="flex">P3</div>
+            </div>
+            <div className="grid grid-rows-1 items-center text-center">→</div>
+            <div className="grid grid-rows-1 items-center text-center">
+              <span>
+                y<sub>3</sub>
+              </span>
+            </div>
+          </div>
+        </section>
+
+        <section className="flex flex-col space-y-2">
+          <div className="grid grow grid-cols-4 rounded-md border-2 p-2">
+            <div className="grid grid-rows-1">
+              <p>
+                <span>
+                  y<sub>1</sub>
+                </span>
+                <span>→</span>
+              </p>
+              <p>
+                <span>
+                  y<sub>2</sub>
+                </span>
+                <span>→</span>
+              </p>
+            </div>
+            <div className="grid grid-rows-1 items-center text-center">
+              <div className="flex">P4</div>
+            </div>
+            <div className="grid grid-rows-1 items-center text-center">→</div>
+            <div className="grid grid-rows-1 items-center text-center">
+              <span>
+                y<sub>4</sub>
+              </span>
+            </div>
+          </div>
+
+          <div className="grid grow grid-cols-4 rounded-md border-2 p-2">
+            <div className="grid grid-rows-1">
+              <p>
+                <span>
+                  y<sub>2</sub>
+                </span>
+                <span>→</span>
+              </p>
+              <p>
+                <span>
+                  y<sub>3</sub>
+                </span>
+                <span>→</span>
+              </p>
+            </div>
+            <div className="grid grid-rows-1 items-center text-center">
+              <div className="flex">P5</div>
+            </div>
+            <div className="grid grid-rows-1 items-center text-center">→</div>
+            <div className="grid grid-rows-1 items-center text-center">
+              <span>
+                y<sub>5</sub>
+              </span>
+            </div>
+          </div>
+        </section>
+        <section className="flex flex-col">
+          <div className="grid grow grid-cols-4 rounded-md border-2 p-2">
+            <div className="grid grid-rows-1">
+              <p>
+                <span>
+                  y<sub>4</sub>
+                </span>
+                <span>→</span>
+              </p>
+              <p>
+                <span>
+                  y<sub>5</sub>
+                </span>
+                <span>→</span>
+              </p>
+            </div>
+            <div className="grid grid-rows-1 items-center text-center">
+              <div className="flex">P6</div>
+            </div>
+            <div className="grid grid-rows-1 items-center text-center">→</div>
+            <div className="grid grid-rows-1 items-center text-center">
+              <span>
+                y<sub>out</sub>
+              </span>
+            </div>
+          </div>
+        </section>
+      </div>
       <section className="grid grid-cols-4 gap-2">
         <section className="flex flex-col space-y-2">
           <div className="rounded-md border-2 p-2">
@@ -597,10 +758,18 @@ const XorPerceptron = memo(() => {
           <h4>진리표</h4>
           <section className="flex flex-col items-center justify-center">
             <div className="grid w-full grid-cols-4">
-              <div className="text-center font-bold">x1</div>
-              <div className="text-center font-bold">x2</div>
-              <div className="text-center font-bold">y</div>
-              <div className="text-center font-bold">y*</div>
+              <div className="text-center font-bold">
+                x<sub>1</sub>
+              </div>
+              <div className="text-center font-bold">
+                x<sub>2</sub>
+              </div>
+              <div className="text-center font-bold">
+                y<sub>out</sub>
+              </div>
+              <div className="text-center font-bold">
+                y<sub>predict</sub>
+              </div>
             </div>
             {[
               [0, 0],
