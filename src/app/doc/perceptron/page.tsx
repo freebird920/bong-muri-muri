@@ -4,6 +4,14 @@ const DocPerceptronPage = memo(() => {
   return (
     <div className="container mx-auto px-2 pb-2">
       <article className="flex flex-col space-y-2">
+        <div className="w-full">
+          <a
+            className="rounded-md border-2 px-2 py-1 hover:bg-rose-500 hover:bg-opacity-40"
+            href="/doc"
+          >
+            목록으로
+          </a>
+        </div>
         <h1 className="text-xl font-extrabold">퍼셉트론</h1>
         <p>
           퍼셉트론(Perceptron)은 퍼셉트론은 입력값(x<sub>n</sub>)에 가중치(w
