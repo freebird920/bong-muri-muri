@@ -230,7 +230,7 @@ const DocLossFunctionPage = memo(() => {
                   <p>{rank}</p>
                   <p>{admit}</p>
                   <p className="truncate">{predictValue}</p>
-                  <p>{lossValue}</p>
+                  <p className="truncate">{lossValue}</p>
                 </li>
               );
             })}
