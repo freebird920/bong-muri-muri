@@ -35,18 +35,18 @@ const DocCrossEntropyPage = memo(() => {
         <div>
           <h3 className="font-extrabold">2. 확률 변화에 따른 정보량 변화</h3>
           <div className="rounded-md border-2 p-2">
-            <ul className="">
+            <ul className="space-y-1">
               <li className="grid grid-cols-2 font-extrabold">
-                <p>확률</p>
+                <p className="px-2">확률</p>
                 <p>정보량</p>
               </li>
               {[1, 0.9, 0.5, 0.1, 0.01, 0.001, 0.0001].map((element) => {
                 return (
                   <li
                     key={`${element}-information-content-table`}
-                    className="grid grid-cols-2"
+                    className="grid grid-cols-2 rounded-md hover:bg-lime-500 hover:bg-opacity-50"
                   >
-                    <p className="font-mono">
+                    <p className="px-2 font-mono">
                       {element} ({element * 100}%)
                     </p>
                     <p className="truncate font-mono">
