@@ -5,13 +5,13 @@ const DocCrossEntropyPage = memo(() => {
     if (p <= 0) return 0;
     return -1 * Math.log2(p);
   };
-  const partialEntropy = (p: number) => {
-    if (p <= 0) return 0;
-    return p * informationContent(p);
-  };
-  const entropy = (pArray: number[]) => {
-    return pArray.reduce((acc, p) => acc + partialEntropy(p), 0);
-  };
+  // const partialEntropy = (p: number) => {
+  //   if (p <= 0) return 0;
+  //   return p * informationContent(p);
+  // };
+  // const entropy = (pArray: number[]) => {
+  //   return pArray.reduce((acc, p) => acc + partialEntropy(p), 0);
+  // };
   return (
     <div className="container mx-auto">
       <div className="flex flex-col space-y-2">
