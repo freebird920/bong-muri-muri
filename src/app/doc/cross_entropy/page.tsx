@@ -46,7 +46,7 @@ const DocCrossEntropyPage = memo(() => {
                     key={`${element}-information-content-table`}
                     className="grid grid-cols-2 rounded-md hover:bg-lime-500 hover:bg-opacity-50"
                   >
-                    <p className="px-2 font-mono">
+                    <p className="truncate px-2 font-mono">
                       {element} ({element * 100}%)
                     </p>
                     <p className="truncate font-mono">
@@ -71,6 +71,7 @@ const DocCrossEntropyPage = memo(() => {
           <p>주사위의 엔트로피</p>
         </div>
         <div>
+          <p>{entropy([0.0001, 0.9999])}</p>
           <p>{entropy([0.5, 0.5])}</p>
           <p>{entropy([0.05, 0.5])}</p>
           <p>{entropy([4 / 6, 0.5 / 6, 0.5 / 6, 0.5 / 6, 0.5 / 6, 1 / 6])}</p>
