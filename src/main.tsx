@@ -17,6 +17,7 @@ import DocPerceptronPage from "./app/doc/perceptron/page.tsx";
 import BookReviewPage from "./app/book_review/page.tsx";
 import DocLossFunctionPage from "./app/doc/loss_function/page.tsx";
 import DocCrossEntropyPage from "./app/doc/cross_entropy/page.tsx";
+import AuthPage from "./app/auth/page.tsx";
 
 const root = document.getElementById("root")!;
 createRoot(root).render(
@@ -25,6 +26,7 @@ createRoot(root).render(
       <NavbarComp></NavbarComp>
       <Routes>
         <Route path="/" element={<HomePage></HomePage>}></Route>
+        <Route path="/auth" element={<AuthPage></AuthPage>}></Route>
         <Route path="/about" element={<AboutPage></AboutPage>}></Route>
         <Route
           path="/book_review"

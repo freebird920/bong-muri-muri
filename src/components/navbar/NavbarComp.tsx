@@ -32,7 +32,12 @@ const NavbarComp = memo(() => {
       >
         Test
       </NavLink>
-
+      <NavLink
+        to="/auth"
+        className={({ isActive }) => (isActive ? "active" : "")}
+      >
+        Auth
+      </NavLink>
       <a
         href="https://github.com/freebird920/bong-muri-muri"
         target="_blank"
