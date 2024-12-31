@@ -18,6 +18,7 @@ import BookReviewPage from "./app/book_review/page.tsx";
 import DocLossFunctionPage from "./app/doc/loss_function/page.tsx";
 import DocCrossEntropyPage from "./app/doc/cross_entropy/page.tsx";
 import AuthPage from "./app/auth/page.tsx";
+import DocPractice01Page from "./app/doc/practice_01/page.tsx";
 
 const root = document.getElementById("root")!;
 createRoot(root).render(
@@ -45,6 +46,10 @@ createRoot(root).render(
           <Route
             path="cross_entropy"
             element={<DocCrossEntropyPage></DocCrossEntropyPage>}
+          ></Route>
+          <Route
+            path="practice_01"
+            element={<DocPractice01Page></DocPractice01Page>}
           ></Route>
         </Route>
       </Routes>
